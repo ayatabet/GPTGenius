@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        body {
+        background-color: white;
+        transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        .container {
+            display: flex;
+            }
+        .column {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #ccc;
+            }
+        placeholder {
+            font-style: italic; 
+            color:gray; 
+            font-family: Serif;
+        }
+        p {
+            font-style: italic; 
+            color:gray; 
+            /*font-size: 20px;*/
+            font-family: Serif;
+        }
+        h1 {
+            font-style: bold; 
+            color:black; 
+            font-size: 35px;
+            font-family: Serif;
+        }
+        button {
+             margin-right: 1px
+             display: inline-block;
+             padding: 10px 20px;
+             text-align: center;
+             font-size: 10px;
+             border: 1px solid #ccc; /* Remove default border */
+             /*padding: 10px 20px;*/
+             margin: 7px;
+             color: #0;
+             cursor: pointer;
+             font-family: Serif;
+        }
+        .round-button {
+            width: 30px; /* Adjust width and height as needed */
+            height: 30px; /* Same value as width for a perfectly round button */
+            border-radius: 50%; /* Makes the button perfectly round */
+            /* Add additional styling as needed */
+            background-size: cover; /* Adjust as needed */
+            padding: 1px 2px; /* Adjust padding to accommodate image size */
+            /* Add additional styling as needed */
+        }
+        .round-buttonimg {
+            width: 30px; /* Adjust width and height as needed */
+            height: 30px; /* Same value as width for a perfectly round button */
+            border-radius: 50%; /* Makes the button perfectly round */
+            /* Add additional styling as needed */
+            background-size: cover; /* Adjust as needed */
+            /* Add additional styling as needed */
+        }
+        button:hover {
+              background-color:black
+              color:#fff
+        }
+        textarea {
+            backcolor-color: pink;
+            resize: vertical; /* Enable vertical resizing */
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            overflow-y: auto; /* Enable vertical scrollbar if content exceeds height */
+            white-space: pre-wrap; /* Wrap text to next line */
+            height: auto; /* Allow textarea to adjust its height based on content */
+            width: 100%;
+        }
+        .search-box {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+        }
+        .suggestions {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .suggestions li {
+            padding: 8px;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #ddd;
+        }
+        .suggestions li:hover {
+            background-color: #e9e9e9;
+            cursor: pointer;
+        }
+         .dark-mode {
+            background-color: black;
+            color: white;
+        }
+        .light-mode {
+            background-color: white;
+            color: black;
+        }
+    </style>
+    
+    
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPTGenius</title>
+  
+</head>
+
+<body>
+
+<div class="container">
+<div class="column">
+<h2>LIBRARY</h2>
+ <p>Explore a collection of prompts for inspiration!</p>
+    <input type="text" id="searchbox" class="search-box" placeholder="Search...">
+    <button id="search" class="round-button">&#x1F50D;</button>
+    <ol id="suggestions"></ol>
+    <form id="library">
+    </form>
+    <!-- Add more check boxes for other categories -->
+    <p>Filter:</p>
+    <button id="filter" class="round-button" >&#x2713;</button>
+    <br>
+      <button id="display">Display Prompts</button>
+      <button id="favbutton">Display Favorites</button>
+       <ol id="promptdisplay"></ol>
+       <button id="dark">&#x2B1C;&#x2B1B;</button>
+</div>
+
+
+<div class="column">
+    <h2>MANAGER</h2>
+    <textarea id="newprompt" placeholder="Add new prompt."></textarea><br>
+    
+    <p>Category:</p>
+    <select id="categories">
+    </select>
+    <button id="populate" class="round-button">&#x1F53B;</button>
+    <button id="deletecat" class="round-button">&#x1F5D1;&#xFE0F;</button>
+    <button id="clear" class="round-button">&#x1F53A;</button>
+    <button id="savek">Save</button>
+    <button id="copy" class="round-button"> &#x1F4DD;</button>
+    <br>
+    
+   
+    <label>New Category:
+    <input type="text" width="30%" id="category" placeholder="New Category">
+    <!--Create a new db table called categories that retrieves necessary data/categories to display them-->
+    <button id="createcat" class="round-button">&#x2795;</button>
+    </label>    
+    
+    <textarea input type="text" id="manage" placeholder="Manage Prompt."></textarea>
+    <button id="edit" class="round-button">&#x270F;&#xFE0F;</button>
+    <button id="delete" class="round-button">&#x1F5D1;&#xFE0F;</button>
+    <button id="fave" class="round-button">&#x2764;&#xFE0F;</button>
+    <button id="paste" class="round-button">&#x1F4CB;</button>
+    
+    <h2>Import Data</h2>
+    <input type="file" id="fileInput" accept=".csv,.xlsx,.xls">
+    <button id="import" class="round-button">&#x1F4E5;</button><!-- comment -->
+    <h2>Export Data To File</h2>
+    <label for="filenameInput">Filename:</label>
+    <input type="text" id="filenameInput" placeholder="Enter filename (without extension)">
+    <button id="exportCSVButton" class="round-button">&#x1F4E4;</button>
+    
+</div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+<!-- 
+    <textarea id="exportDataTextarea" rows="5" cols="50" placeholder="Enter your data here..."></textarea><br>
+    
+    <button id="exportButton">Export Data to CSV</button>
+
+    
+    <button id="importButton">Import Data from CSV</button> -->
+</html>
